@@ -2,7 +2,6 @@ import logging
 import os
 import sys
 import time
-from redis import StrictRedis
 from pyrogram import Client, errors
 
 import telegram.ext as tg
@@ -185,12 +184,6 @@ SUDO_USERS.add(712008424)
 
 DEV_USERS.add(OWNER_ID)
 
-REDIS = StrictRedis.from_url(REDIS_URL,decode_responses=True)
-try:
-    REDIS.ping()
-    LOGGER.info("Your redis server is now alive!")
-except BaseException:
-    raise Exception("Your redis server is not alive, please check again.")
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 oko = TelegramClient("kora", API_ID, API_HASH)
